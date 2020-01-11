@@ -14,6 +14,9 @@ ul {
   height: 100%;
   font-size: 14px;
 }
+.split {
+  height: 20px;
+}
 .van-nav-bar {
   background: #3296fa;
 }

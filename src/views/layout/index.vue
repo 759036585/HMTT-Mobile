@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <van-nav-bar v-if="showNavBar" fixed title="黑马头条" right-text="搜索" @click-right="onClickRight" />
+    <van-nav-bar @click-right="onClickRight" v-if="showNavBar" fixed title="黑马头条" right-text="搜索" />
     <div class="my-wrapper" :class="{noTop:!showNavBar}">
       <router-view></router-view>
     </div>
@@ -21,7 +21,9 @@ export default {
     }
   },
   methods: {
-    onClickRight () {}
+    onClickRight () {
+      this.$router.push('/search')
+    }
   }
 }
 </script>

@@ -1,5 +1,7 @@
 <template>
-  <div>登陆组件</div>
+  <div class="container">
+    <van-nav-bar title="登陆" left-arrow @click-left="$router.back()"></van-nav-bar>
+  </div>
 </template>
 
 <script>
