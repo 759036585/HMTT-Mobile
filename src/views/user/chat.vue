@@ -1,5 +1,5 @@
 <template>
-  <div>搜索中心组件</div>
+  <div>小智同学组件</div>
 </template>
 
 <script>
