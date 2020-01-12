@@ -1,0 +1,47 @@
+[33mcommit 975d9a73190301610035f7fd8a7fb4b03e48ff74[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: MRLI <759036585@qq.com>
+Date:   Sun Jan 12 09:56:24 2020 +0800
+
+    初步request工具封装
+
+[33mcommit e5d03eb9e6f75232d0c20c58160b5a591be83093[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 16:00:55 2020 +0800
+
+    其他功能组件-骨架屏
+
+[33mcommit ebf5882766e72e54bee300a8289ee6ab8bf30181[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 15:17:33 2020 +0800
+
+    引入全局样式
+
+[33mcommit 607a89eeca679a36510527adaa7ac92904d988dc[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 15:09:53 2020 +0800
+
+    完成首页基础布局
+
+[33mcommit 05c132d4c78320e4385988f57552450e34562b1d[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 14:04:14 2020 +0800
+
+    约定路由规则完毕
+
+[33mcommit eb0e9d0407f01a5d4eb956db835e8dc28cf34991[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 11:09:51 2020 +0800
+
+    使用vant
+
+[33mcommit 39dd9c4dcbc0989dcd5bc0062f4a91890b7fa2a3[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 10:09:22 2020 +0800
+
+    项目页面目录搭建初始化
+
+[33mcommit 48ab37b950ba69d54ca3897bdc2e3a59a777fb56[m
+Author: MRLI <759036585@qq.com>
+Date:   Sat Jan 11 09:50:56 2020 +0800
+
+    init

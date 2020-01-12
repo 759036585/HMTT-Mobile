@@ -2,6 +2,7 @@
 import axios from 'axios'
 import JSONBIG from 'json-bigint'
 import store from '@/store/index'
+import router from '@/router/index'
 
 const instance = axios.create({
   baseURL: 'http://ttapi.research.itcast.cn/app/v1_0/',
@@ -28,8 +29,31 @@ instance.interceptors.response.use(response => {
   } catch (error) {
     return response.data
   }
-}, error => {
-  return Promise.reject(error)
+}, async error => {
+  if (error.response && error.response.status === 401) {
+    let toPath = { path: '/login', query: { redirectURL: router.currentRoute.path } }
+
+    if (store.state.user.refresh_token) {
+      try {
+        let result = await axios({
+          methods: 'put',
+          url: 'http://ttapi.research.itcast.cn/app/v1_0/authorizations',
+          Authorization: `Bearer ${store.state.user.token}`
+        })
+        store.commit('updateUser', {
+          token: result.data.data.token,
+          refresh_token: store.state.user.refresh_token
+        })
+        return instance(error.config)
+      } catch (error) {
+        store.commit('clearUser')
+        router.push(toPath)
+      }
+    } else {
+      router.push(toPath)
+    }
+    return Promise.reject(error)
+  }
 })
 
 export default instance
