@@ -3,7 +3,7 @@
 const USER_TOKEN = 'heimatoutiao-91'
 
 export function getUser () {
-  return JSON.parse(localStorage.getItem(USER_TOKEN || '{}'))
+  return JSON.parse(localStorage.getItem(USER_TOKEN) || '{}')
 }
 export function setUser (user) {
   localStorage.setItem(USER_TOKEN, JSON.stringify(user))

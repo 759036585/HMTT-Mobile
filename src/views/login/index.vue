@@ -14,6 +14,9 @@
           v-model="userForm.code"
           center
           clearable
+           @blur="validCode"
+           required
+          :error-message="errorMessage.code"
           label="短信验证码"
           placeholder="请输入短信验证码"
         >
@@ -21,7 +24,7 @@
       </van-field>
     </van-cell-group>
     <div class="btn">
-      <van-button type="info" style="width:100%;">登陆</van-button>
+      <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" type="info" style="width:100%;" @click="login">登陆</van-button>
 
     </div>
 
@@ -29,12 +32,14 @@
 </template>
 
 <script>
+import { login } from '@/api/user'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
       userForm: {
-        mobile: '',
-        code: ''
+        mobile: '13911111111',
+        code: '246810'
       },
       errorMessage: {
         mobile: '',
@@ -42,14 +47,42 @@ export default {
       }
     }
   },
+
   methods: {
     validMobile () {
       if (!this.userForm.mobile) {
         this.errorMessage.mobile = '手机号码不能为空'
         return false
       }
+      if (!/^1[3-9]\d{9}$/.test(this.userForm.mobile)) {
+        this.errorMessage.mobile = '手机号码格式不正确'
+        return false
+      }
       this.errorMessage.mobile = ''
       return true
+    },
+    validCode () {
+      if (!this.userForm.code) {
+        this.errorMessage.code = '请输入验证码'
+        return false
+      }
+      if (!/\d{6}$/.test(this.userForm.code)) {
+        this.errorMessage.code = '验证码为6位数字'
+        return false
+      }
+      this.errorMessage.code = ''
+      return true
+    },
+    ...mapMutations(['updateUser']),
+
+    async login () {
+      if (this.validMobile() && this.validCode()) {
+        const result = await login(this.userForm)
+        this.updateUser({ user: result })
+        this.$notify({ type: 'success', message: '登陆成功', duration: 800 })
+        let { redirectUrl } = this.$route.query
+        this.$router.push(redirectUrl || '/')
+      }
     }
   }
 }
