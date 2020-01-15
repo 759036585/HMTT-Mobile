@@ -15,12 +15,16 @@
 
 <script>
 import { reports } from '@/api/constants'
+import eventBus from '@/utils/eventBus'
 export default {
   data () {
     return {
       isReport: false,
       reports
     }
+  },
+  created () {
+    eventBus.$on('delArticle', () => (this.isReport = false))
   }
 }
 </script>

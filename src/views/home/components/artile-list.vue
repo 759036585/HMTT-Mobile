@@ -105,7 +105,6 @@ export default {
         }
       }
     })
-    eventBus.$on('delArticle', () => (this.isReport = false))
   }
 }
 </script>
