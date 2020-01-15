@@ -13,7 +13,7 @@
       <more-action @dislike="dislikeOrReport($event,'dislike')" @report="dislikeOrReport($event,'report')"></more-action>
     </van-popup>
     <van-action-sheet :round="false" v-model="showChannelEdit" title="编辑频道">
-      <channel-edit :active="active" :channels="channels" @selectChannel="selectChannel"></channel-edit>
+      <channel-edit :active="active" :channels="channels" @selectChannel="selectChannel" @delChannel="delChannel($event)"></channel-edit>
     </van-action-sheet>
   </div>
 </template>
@@ -21,7 +21,7 @@
 <script>
 import eventBus from '../../utils/eventBus'
 import ArticleList from './components/artile-list'
-import { getMyChannels } from '../../api/channels'
+import { getMyChannels, delMyChannels } from '../../api/channels'
 import { disLikeArticle, reportArticle } from '../../api/article'
 import MoreAction from './components/more-action'
 import ChannelEdit from './components/channel-edit'
@@ -42,6 +42,20 @@ export default {
     }
   },
   methods: {
+    async delChannel (id) {
+      try {
+        await delMyChannels(id)
+        let index = this.channels.findIndex(item => item.id === id)
+        if (index <= this.active) {
+          this.active = this.active - 1
+        }
+        if (index > -1) {
+          this.channels.splice(index, 1)
+        }
+      } catch (error) {
+        this.$notify({ type: 'danger', message: '移除频道失败' })
+      }
+    },
     selectChannel (id) {
       const index = this.channels.findIndex(item => item.id === id)
       this.active = index
