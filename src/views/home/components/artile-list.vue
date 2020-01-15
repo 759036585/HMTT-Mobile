@@ -81,7 +81,6 @@ export default {
 
     async onRefresh () {
       await this.$sleep()
-      console.log('a')
       const result = await getArticles({
         channel_id: this.channel_id, timestamp: Date.now()
       })

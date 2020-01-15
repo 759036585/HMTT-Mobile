@@ -9,7 +9,7 @@
       </div>
       <van-grid class="van-hairline--left">
         <van-grid-item v-for="(item,index) in channels" :key="item.id">
-          <span class="f12">{{item.name}}</span>
+          <span @click="$emit('selectChannel',item.id)" class="f12">{{item.name}}</span>
           <van-icon v-if="index !== 0" v-show="editing" class="btn" name="cross"></van-icon>
         </van-grid-item>
       </van-grid>
