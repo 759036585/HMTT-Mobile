@@ -41,7 +41,7 @@ const routes = [
     path: '/login', component: Login
   },
   {
-    path: '/search', component: Search
+    path: '/', component: Search
   },
   {
     path: '/search/result', component: Result
